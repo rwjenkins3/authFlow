@@ -4,7 +4,7 @@ import { View, Text, TextInput, Button } from 'react-native'
 
 import Context from '../context';
 
-export const SignUp = () => {
+export const SignUp = ({ navigation }) => {
   const value = useContext(Context);
 
   const [ fname, setFname ] = useState('');

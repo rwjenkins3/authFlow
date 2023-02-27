@@ -24,7 +24,7 @@ export default function App() {
     async function restoreProfile() {
       let permaInfo;
       permaInfo = await getData();
-
+      console.log(permaInfo)
       if(permaInfo === null || permaInfo === {}) {
         permaInfo = { FName: '', LName: '', Email: '', Password: '' };
         setHasProfile(false);
@@ -37,7 +37,7 @@ export default function App() {
 
     restoreProfile();
 
-  }, [userProfile]);
+  }, []);
 
   const storeData = async (value) => {
     try {
@@ -58,9 +58,17 @@ export default function App() {
     }
   }
 
+  const saveUserProfile = (user) => {
+    setUserProfile(user);
+    setHasProfile(true);
+  }
+
+  const saveData = (user) => {
+    storeData(user);
+  }
 
   return (
-    <Context.Provider value = {{ profile: userProfile, setProfile: setUserProfile, storeProfile: storeData }}>
+    <Context.Provider value = {{ profile: userProfile, setProfile: saveUserProfile, storeProfile: saveData }}>
       <NavigationContainer>
         <Stack.Navigator>
           {
