@@ -37,21 +37,22 @@ export default function App() {
 
     restoreProfile();
 
-  }, []);
+  }, [hasProfile]);
 
   const storeData = async (value) => {
     try {
       const jsonValue = JSON.stringify(value)
       console.log(jsonValue);
-      await AsyncStorage.setItem('@storage_Key', jsonValue)
+      await AsyncStorage.setItem('@storage_Key_rob9', jsonValue)
     } catch (e) {
       // saving error
+      console.log(e.message);
     }
   }
   
   const getData = async () => {
     try {
-      const jsonValue = await AsyncStorage.getItem('@storage_Key')
+      const jsonValue = await AsyncStorage.getItem('@storage_Key_rob9')
       return jsonValue != null ? JSON.parse(jsonValue) : null;
     } catch(e) {
       // error reading value
@@ -59,12 +60,16 @@ export default function App() {
   }
 
   const saveUserProfile = (user) => {
+    console.log('In saveUserProfile. The user parameter is:');
+    console.log(user);
     setUserProfile(user);
+    storeData(user)
     setHasProfile(true);
   }
 
   const saveData = (user) => {
-    storeData(user);
+    console.log("Actually saving...");
+    storeData(userProfile);
   }
 
   return (

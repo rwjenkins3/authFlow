@@ -8,7 +8,7 @@ export const Welcome = () => {
 
   return (
     <View>
-        <Text>Welcome Person </Text>
+        <Text>Welcome {value.profile.FName} </Text>
     </View>
    
   )
