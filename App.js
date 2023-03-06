@@ -72,8 +72,15 @@ export default function App() {
     storeData(userProfile);
   }
 
+
+  const logOut = () => {
+    console.log('logging out');
+    setHasProfile(false);
+    setUserProfile({});
+  }
+
   return (
-    <Context.Provider value = {{ profile: userProfile, setProfile: saveUserProfile, storeProfile: saveData }}>
+    <Context.Provider value = {{ profile: userProfile, setProfile: saveUserProfile, storeProfile: saveData, logOut: logOut }}>
       <NavigationContainer>
         <Stack.Navigator>
           {

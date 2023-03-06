@@ -4,7 +4,8 @@ const Context = createContext(
     { 
         profile: null, 
         setProfile: (user) => {}, 
-        storeProfile: (user) => {} 
+        storeProfile: (user) => {},
+        logOut: () => {} 
     });
 
 export default Context;
